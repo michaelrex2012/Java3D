@@ -22,4 +22,4 @@ If applicable, add screenshots to help explain your problem.
 
 ## Environment
 * OS: [e.g. Windows 10]
-* Java3D version [e.g. 0.1]
+* Java3D version: [e.g. 0.1]
