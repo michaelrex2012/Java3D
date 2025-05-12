@@ -7,19 +7,19 @@ assignees: michaelrex2012
 
 ---
 
-**Describe the problem**
+## Problem:
 A clear and concise description of what the bug is.
 
-**To Reproduce**
+## How to reproduce:
 Steps to reproduce the behavior:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-**Screenshots**
+## Screenshots:
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. Windows 10]
-- Java3D version [e.g. 0.1]
+## Environment:
+* OS: [e.g. Windows 10]
+* Java3D version [e.g. 0.1]
