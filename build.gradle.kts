@@ -1,7 +1,7 @@
 plugins {
     application
     id("java")
-
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "org.main"
@@ -22,3 +22,19 @@ tasks.test {
     useJUnitPlatform()
 }
 
+application {
+    mainClass.set("DemoViewer")
+}
+
+tasks {
+    shadowJar {
+        archiveBaseName.set("Java3D")
+        archiveClassifier.set("")
+        archiveVersion.set("0.4")
+        mergeServiceFiles()
+    }
+
+    build {
+        dependsOn(shadowJar)
+    }
+}
