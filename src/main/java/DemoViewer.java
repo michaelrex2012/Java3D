@@ -18,13 +18,10 @@ import java.util.Objects;
 public class DemoViewer {
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
-        // Define the options for the dropdown
         String[] options = {"Darcula", "Dark", "Light", "Swing"};
 
-        // Create the JComboBox
         JComboBox<String> comboBox = new JComboBox<>(options);
 
-        // Show the combo box inside a JOptionPane
         int result = JOptionPane.showConfirmDialog(
                 null,
                 comboBox,
@@ -193,10 +190,8 @@ public class DemoViewer {
 
             List<Triangle> toLoad = new ArrayList<>(tetrahedron);
 
-            // Rotation angles
-            final double[][] rotation = {{0, 0}}; // [heading, pitch]
+            final double[][] rotation = {{0, 0}};
 
-            // Panel to display render results
             JPanel renderPanel = new JPanel() {
                 public void paintComponent(Graphics g) {
                     int numTris = 0;
@@ -398,21 +393,15 @@ public class DemoViewer {
                     });
 
 
-                    // Set the dialog title (optional)
                     fileChooser.setDialogTitle("Select a file to read mesh data");
 
-                    // Show the Open dialog and capture the user's action
                     int userSelection = fileChooser.showOpenDialog(null);
 
-                    // Check if the user selected a file
                     if (userSelection == JFileChooser.APPROVE_OPTION) {
-                        // Get the selected file
                         File selectedFile = fileChooser.getSelectedFile();
 
-                        // Get the absolute path of the file
                         String absolutePath = selectedFile.getAbsolutePath();
 
-                        // Print the file path
                         System.out.println("Selected file: " + absolutePath);
 
                         if (selectedFile.getName().endsWith(".3djm")) {
@@ -453,7 +442,6 @@ public class DemoViewer {
                         }
                         if (selectedFile.getName().endsWith(".obj")) {
                             try {
-                                // Method to read an .obj file and create a list of triangles
                                 List<Vertex> vertices = new ArrayList<>();
                                 List<Triangle> triangles = new ArrayList<>();
                                 double scaleFactor = Double.parseDouble(JOptionPane.showInputDialog(null, "Enter scale factor (New auto-scale coming soon):"));
@@ -463,14 +451,12 @@ public class DemoViewer {
                                     while ((line = br.readLine()) != null) {
                                         line = line.trim();
                                         if (line.startsWith("v ")) {
-                                            // Parse a vertex
                                             String[] vertexData = line.split("\\s+");
                                             double x = Double.parseDouble(vertexData[1]) * scaleFactor;
                                             double y = Double.parseDouble(vertexData[2]) * scaleFactor;
                                             double z = Double.parseDouble(vertexData[3]) * scaleFactor;
                                             vertices.add(new Vertex(x, y, z));
                                         } else if (line.startsWith("f ")) {
-                                            // Parse a face (triangle)
                                             String[] faceData = line.split("\\s+");
                                             int v1Index = Integer.parseInt(faceData[1].split("/")[0]) - 1;
                                             int v2Index = Integer.parseInt(faceData[2].split("/")[0]) - 1;
@@ -480,7 +466,6 @@ public class DemoViewer {
                                             Vertex v2 = vertices.get(v2Index);
                                             Vertex v3 = vertices.get(v3Index);
 
-                                            // Default color is set to null
                                             triangles.add(new Triangle(v1, v2, v3, new Color(16777215)));
                                         }
                                     }
@@ -497,7 +482,6 @@ public class DemoViewer {
                             }
                         }
                     } else {
-                        // User canceled the file selection
                         System.out.println("No file selected.");
                     }
 
@@ -535,7 +519,6 @@ public class DemoViewer {
                 }
             });
 
-            // Mouse interaction
             renderPanel.addMouseMotionListener(new MouseMotionAdapter() {
                 private int prevX, prevY;
 
@@ -544,8 +527,8 @@ public class DemoViewer {
                     int deltaX = e.getX() - prevX;
                     int deltaY = e.getY() - prevY;
 
-                    rotation[0][0] += deltaX; // Horizontal rotation (heading)
-                    rotation[0][1] -= deltaY; // Vertical rotation (pitch)
+                    rotation[0][0] += deltaX;
+                    rotation[0][1] -= deltaY;
 
                     prevX = e.getX();
                     prevY = e.getY();
