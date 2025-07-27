@@ -1,3 +1,7 @@
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import java.awt.*;
@@ -13,7 +17,36 @@ import java.util.Objects;
 
 public class DemoViewer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
+        // Define the options for the dropdown
+        String[] options = {"Darcula", "Dark", "Light", "Swing"};
+
+        // Create the JComboBox
+        JComboBox<String> comboBox = new JComboBox<>(options);
+
+        // Show the combo box inside a JOptionPane
+        int result = JOptionPane.showConfirmDialog(
+                null,
+                comboBox,
+                "Select a Theme",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        String selection = (String) comboBox.getSelectedItem();
+
+        if (selection != "Swing") {
+            if (selection == "Dark") {
+                UIManager.setLookAndFeel(new FlatDarkLaf());
+            }
+            if (selection == "Light") {
+                UIManager.setLookAndFeel(new FlatLightLaf());
+            }
+            if (selection == "Darcula") {
+                UIManager.setLookAndFeel(new FlatDarculaLaf());
+            }
+        }
+
         Color newColor = null;
         String path = System.getProperty("user.dir") + "\\src\\main\\java\\preferences.txt";
         try {
