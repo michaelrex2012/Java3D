@@ -7,6 +7,6 @@ Java3D is a 3D renderer I just decided to make one day. It can load 3D models an
 * Toggle hiding/showing model.
 * And more!
 ## Installation📦
-Java3D can be installed from releases in this repo. It can be downloaded with a .exe installer or a .zip archive. Both installation options include a JRE (Temurin JRE 21.0.7+6) and some example models to load in Java3D.
+Java3D can be installed from releases in this repo. It can be downloaded with an .exe installer or a .zip archive. Both installation options include a JRE (Temurin JRE 21.0.7+6) and some example models to load in Java3D.
 ## Docs📖
 Documentation can be found at our [wiki](https://github.com/michaelrex2012/Java3D/wiki).
