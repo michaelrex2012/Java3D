@@ -494,6 +494,8 @@ public class DemoViewer {
             Custom.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    int option = JOptionPane.showOptionDialog(null, "Do you want to add mesh(y) or replace it(n)?", "Mesh", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+
                     List<Triangle> triangles = new ArrayList<>();
                     List<Double> component = new ArrayList<>();
                     Color color = new Color(255,255,255);
@@ -522,7 +524,9 @@ public class DemoViewer {
                                     component.get(8)),
                             color));
 
-                    toLoad.clear();
+                    if (option == 1) {
+                        toLoad.clear();
+                    }
                     toLoad.addAll(triangles);
                     renderPanel.repaint();
                 }
@@ -543,7 +547,7 @@ public class DemoViewer {
             About.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent a) {
-                    JOptionPane.showMessageDialog(null, "Made by: @michaelrex2012" + System.lineSeparator() + "Java3D Version: 0.3" + System.lineSeparator() + "Java: Temurin JRE 21.0.7+6", "About", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Made by: @michaelrex2012" + System.lineSeparator() + "Java3D Version: 0.5" + System.lineSeparator() + "Java: Temurin JRE 21.0.7+6", "About", JOptionPane.INFORMATION_MESSAGE);
                 }
             });
 
