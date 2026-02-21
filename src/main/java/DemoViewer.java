@@ -91,6 +91,7 @@ public class DemoViewer {
             JMenuItem Model_Info = new JMenuItem("Model Info");
             JMenuItem About = new JMenuItem("About");
             JMenuItem Help = new JMenuItem("Help");
+            JMenuItem Custom = new JMenuItem("Custom");
 
             frame.setJMenuBar(menuBar);
             menuBar.add(Models);
@@ -100,6 +101,7 @@ public class DemoViewer {
             Models.add(Clear);
             Models.add(Tetrahedron);
             Models.add(Load);
+            Models.add(Custom);
             View.add(Background);
             View.add(Reset);
             View.add(Shade);
@@ -486,6 +488,39 @@ public class DemoViewer {
                     }
 
 
+                }
+            });
+
+            Custom.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    List<Triangle> triangles = new ArrayList<>();
+                    List<Double> component = new ArrayList<>();
+                    Color color = new Color(255,255,255);
+                    component.add(Double.valueOf(JOptionPane.showInputDialog(null, "Vertex 1 x", "Vertex 1 x")));
+                    component.add(Double.valueOf(JOptionPane.showInputDialog(null, "Vertex 1 y", "Vertex 1 y")));
+                    component.add(Double.valueOf(JOptionPane.showInputDialog(null, "Vertex 1 z", "Vertex 1 z")));
+                    component.add(Double.valueOf(JOptionPane.showInputDialog(null, "Vertex 2 x", "Vertex 2 x")));
+                    component.add(Double.valueOf(JOptionPane.showInputDialog(null, "Vertex 2 y", "Vertex 2 y")));
+                    component.add(Double.valueOf(JOptionPane.showInputDialog(null, "Vertex 2 z", "Vertex 2 z")));
+                    component.add(Double.valueOf(JOptionPane.showInputDialog(null, "Vertex 3 x", "Vertex 3 x")));
+                    component.add(Double.valueOf(JOptionPane.showInputDialog(null, "Vertex 3 y", "Vertex 3 y")));
+                    component.add(Double.valueOf(JOptionPane.showInputDialog(null, "Vertex 3 z", "Vertex 3 z")));
+                    color = JColorChooser.showDialog(null, "Color", color);
+                    triangles.add(new Triangle(
+                            new Vertex(
+                                    component.get(0),
+                                    component.get(1),
+                                    component.get(2)),
+                            new Vertex(
+                                    component.get(3),
+                                    component.get(4),
+                                    component.get(5)),
+                            new Vertex(
+                                    component.get(6),
+                                    component.get(7),
+                                    component.get(8)),
+                            color));
                 }
             });
 
