@@ -521,6 +521,10 @@ public class DemoViewer {
                                     component.get(7),
                                     component.get(8)),
                             color));
+
+                    toLoad.clear();
+                    toLoad.addAll(triangles);
+                    renderPanel.repaint();
                 }
             });
 
