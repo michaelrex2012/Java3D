@@ -92,6 +92,8 @@ public class DemoViewer {
             JMenuItem About = new JMenuItem("About");
             JMenuItem Help = new JMenuItem("Help");
             JMenuItem Custom = new JMenuItem("Custom");
+            JMenuItem Scale = new JMenuItem("Scale");
+            JMenuItem Export = new JMenuItem("Export");
 
             frame.setJMenuBar(menuBar);
             menuBar.add(Models);
@@ -102,6 +104,8 @@ public class DemoViewer {
             Models.add(Tetrahedron);
             Models.add(Load);
             Models.add(Custom);
+            Models.add(Export);
+            //Models.add(Scale);
             View.add(Background);
             View.add(Reset);
             View.add(Shade);
@@ -529,6 +533,13 @@ public class DemoViewer {
                     }
                     toLoad.addAll(triangles);
                     renderPanel.repaint();
+                }
+            });
+
+            Export.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
                 }
             });
 
